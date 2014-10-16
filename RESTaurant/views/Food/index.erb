@@ -1,11 +1,16 @@
 <h2>Food</h2>
+<a href="/foods/new">Add new</a>
 
 <ul>
   <% @foods.each do |food|%>
     <li>
       <a href="/foods/<%= food.id %>">
-        <%= food.name %>
+        <%= food.name %> 
       </a>
+      <ul>
+      	<li><%= food.description %></li>
+      	<li><%= food.price %></li>
+      </ul>   
     </li>
   <% end %>
 </ul>

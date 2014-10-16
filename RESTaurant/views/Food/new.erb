@@ -1,1 +1,14 @@
-<
+<h1>Add food item for menu</h1>
+
+<form action="/foods" method="post">
+	<label for="food_name">Name</label>
+	<input id="food_name" name="food[name]" type="text"><br />
+
+	<label for="food_description">Description</label>
+	<input id="food_description" name="food[description]" type="text"><br />
+
+	<label for="food_price">Price</label>
+	<input id="food_price" name="food[price]" type="number"><br />
+
+	<input type="submit" value="Add Food Item">
+</form>

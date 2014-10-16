@@ -1,1 +1,5 @@
-show.erb
+<h2><%= @food.name %></h2>
+<p><%= @food.description %></p>
+<p>$<%= @food.price %></p>
+
+<p><a href="/foods/<%= @food.id %>/edit">Edit</a></p>

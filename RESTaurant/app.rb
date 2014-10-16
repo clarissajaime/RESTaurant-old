@@ -23,12 +23,12 @@ ActiveRecord::Base.establish_connection({
 })
 
 require_relative 'models/food'
-require_relative 'models/party'
-require_relative 'models/order'
+# require_relative 'models/party'
+# require_relative 'models/order'
 
 
 ####### HOME PAGE ########
-#GET	/	Displays links to navigate the application (including links to each current parties)
+# GET	/	Displays links to navigate the application (including links to each current parties)
 
 get '/' do
   erb :index
@@ -38,38 +38,45 @@ end
 
 # As an employee who manages the restaurant, I want to manage the menu so that waiting staff can use the app to create orders. 
 
-#GET	/foods	Display a list of food items available
-# INDEX: As a user, I want to see all of the food items
-# Add the route for a get request at /foods
-# Get all of the foods and assign that object to an instance variable
-# so it can be used in the view
-# Render the posts index template
+# GET	/foods	Display a list of food items available
 
 get '/foods' do
-  @food = Food.all
+  @foods = Food.all
   erb :"food/index"
 end
 
-# NEW: As a user, I want to be able to add new food items, so the menu can change. 
+# As a user, I want to be able to add new food items, so the menu can change. 
 
-# GET	/foods/new	Display a form for a new food item
-# Add the route for a get request at /foods/new
-# Render the foods new template
-post '/foods/new' do
-	@food = REPLACE
-	erb: "Food/new"
-
-# ??? POST	/foods	Creates a new food item ???
+get '/foods/new' do
+	erb :"food/new"
+end 
 
 
+# POST	/foods	Creates a new food item 
+post '/foods' do
+	Food.create(params[:food])
+	redirect '/foods'
+end 
 
-#EDIT: As a user, I want to be able to edit the food items, so that we can update the descriptions. 
+#get /foods/:id	Display a single food item 
+
+get '/foods/:id' do
+	@food = Food.find(params[:id])
+	erb :"food/show"
+end
 
 # GET	/foods/:id/edit	Display a form to edit a food item
-
+get '/foods/:id/edit' do
+	@food = Food.find(params[:id])
+	erb :"food/edit"
+end 
 
 # ??? PATCH	/foods/:id	Updates a food item ???
-
+patch '/foods/:id' do
+	food = Food.find(params[:id])
+	food.update(params[:food])
+	redirect '/foods'
+end 
 
 
 
