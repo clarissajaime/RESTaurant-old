@@ -23,7 +23,7 @@ ActiveRecord::Base.establish_connection({
 })
 
 require_relative 'models/food'
-# require_relative 'models/party'
+require_relative 'models/party'
 # require_relative 'models/order'
 
 
@@ -71,18 +71,18 @@ get '/foods/:id/edit' do
 	erb :"food/edit"
 end 
 
-# ??? PATCH	/foods/:id	Updates a food item ???
+# PATCH	/foods/:id	Updates a food item
 patch '/foods/:id' do
 	food = Food.find(params[:id])
 	food.update(params[:food])
 	redirect '/foods'
 end 
 
-
-
-#DELETE: As a user, I want to be able to delete food items so that I can get rid of unpopular items. 
-
 # DELETE	/foods/:id	Deletes a food item
+delete '/foods/:id' do
+	Food.delete(params[:id])
+	redirect '/foods'
+end
 
 
 
@@ -93,31 +93,60 @@ end
 
 # GET	/parties	Display a list of all parties
 get '/parties' do
-  @party = Party.all
-  erb :"party/index"
+  	@parties = Party.all
+  	erb :"party/index"
+end
+
+# GET	/parties/new	Display a form for a new party
+get '/parties/new' do	
+	erb :"party/new"
+end
+
+# POST	/parties	Creates a new party
+post '/parties' do
+	Party.create(params[:party])
+	redirect '/parties'
+end
+
+# GET	/parties/:id	Display a single party and options for adding a food item to the party
+get '/parties/:id' do
+	@party = Party.find(params[:id])
+	erb :"party/show"
+end
+
+# GET	/parties/:id/edit	Display a form for to edit a party's details
+get '/parties/:id/edit' do
+	@party = Party.find(params[:id])
+	erb :"party/edit"
+end 
+
+
+# PATCH	/parties/:id	Updates a party's details
+patch '/parties/:id' do
+	party = Party.find(params[:id])
+	party.update(params[:party])
+	redirect '/parties'
 end
 
 
-# As a server, I want to select the table that I am taking an order from.
-
-# GET	/parties/new	Display a form for a new party
-
-# POST	/parties	Creates a new party
-
-# GET	/parties/:id	Display a single party and options for adding a food item to the party
-
-
-
-### ??
-# GET	/parties/:id/edit	Display a form for to edit a party's details
-# PATCH	/parties/:id	Updates a party's details
-# DELETE	/parties/:id	Delete a party ??
+# DELETE	/parties/:id	Delete a party 
+delete '/parties/:id' do
+	Party.delete(params[:id])
+	redirect '/parties'
+end
 
 
 ####### ORDER ROUTES ########
 
 
 # POST	/orders	Creates a new order
+post '/parties' do
+	Party.create(params[:party])
+	redirect '/parties'
+end
+
 # DELETE	/orders	Removes an order
+
+####### RECIEPT ROUTES ########
 # GET	/parties/:id/receipt	Saves the party's receipt data to a file. Displays the content of the receipt. Offer the file for download.
 # PATCH	/parties/:id/checkout	Marks the party as paid

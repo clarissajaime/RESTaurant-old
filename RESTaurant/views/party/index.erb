@@ -1,0 +1,11 @@
+<h2>Parties</h2>
+
+<a href="parties/new">Add a new party</a><br />
+
+<ul>
+	<% @parties.each do |party| %>
+	<li>
+		<a href="/parties/<%= party.id %>"> Table <%= party.table_num %> -- guests: <%= party.guests %> </a>
+	</li>
+	<% end %>
+</ul>
