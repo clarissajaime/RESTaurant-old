@@ -16,6 +16,7 @@
 
 require "bundler"
 Bundler.require
+require 'pry'
 
 ActiveRecord::Base.establish_connection({
   adapter: 'postgresql',
@@ -24,7 +25,7 @@ ActiveRecord::Base.establish_connection({
 
 require_relative 'models/food'
 require_relative 'models/party'
-# require_relative 'models/order'
+require_relative 'models/order'
 
 
 ####### HOME PAGE ########
@@ -111,6 +112,8 @@ end
 # GET	/parties/:id	Display a single party and options for adding a food item to the party
 get '/parties/:id' do
 	@party = Party.find(params[:id])
+	@foods = Food.all 
+
 	erb :"party/show"
 end
 
@@ -138,14 +141,25 @@ end
 
 ####### ORDER ROUTES ########
 
-
-# POST	/orders	Creates a new order
-post '/parties' do
-	Party.create(params[:party])
-	redirect '/parties'
+# New order form
+get '/parties/:id/orders/new' do
+	@party = Party.find(params[:id])
+	@foods = Food.all
+	erb :'order/new'
 end
 
+
+# POST	/orders	Creates a new order
+post '/orders' do
+	Order.create(params[:order])
+	redirect '/parties/' + params[:order][:party_id]
+end
+
+
+
 # DELETE	/orders	Removes an order
+
+
 
 ####### RECIEPT ROUTES ########
 # GET	/parties/:id/receipt	Saves the party's receipt data to a file. Displays the content of the receipt. Offer the file for download.

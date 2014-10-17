@@ -1,9 +1,34 @@
 <h2>Table <%= @party.table_num %> </h2>
 <p>Numer of guests <%= @party.guests %></p>
-
 <p><a href="/parties/<%= @party.id %>/edit">Edit</a></p>
+
+<a href="/parties/<%= @party.id %>/orders/new">Add new order</a>
+
+
+
+<ul>
+	<% @party.orders.each do |order| %>
+	<li><%= order.food.name %></li>
+	<% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+---
 
 <form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="delete" /> 
-	<input type="submit" value="Delete" />
+	<input type="submit" value="Delete Party" />
 </form>

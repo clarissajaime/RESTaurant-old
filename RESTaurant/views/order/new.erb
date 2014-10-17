@@ -1,0 +1,9 @@
+<h2>New order</h2>
+
+<form action="/orders" method="post">
+	<% @foods.each do |food| %>
+		<input type="radio" name="order[food_id]" value="<%= food.id %>"><%= food.name %><br>
+	<% end %>
+		<input type="hidden" name="order[party_id]" value="<%= @party.id %>"></input>
+	<input type="submit" value="Add Food Item"></input>
+</form>
