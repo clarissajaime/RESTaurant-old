@@ -1,4 +1,5 @@
-<h2>Table <%= @party.table_num %> </h2>
+<center>
+<h2>&nbsp;&nbsp;Table <%= @party.table_num %></h2>
 <p>Number of guests <%= @party.guests %></p>
 <p><a href="/parties/<%= @party.id %>/edit">Edit</a></p>
 
@@ -8,7 +9,7 @@
 	<% @orders.each do |order| %>
 	<li><%= order.food.name %></li>
 	<form action="/parties/<%= @party.id %>/orders/<%= order.id %>" method="post">
-		<input type="hidden" name="_method" value="delete" /> 
+		<input type="hidden" name="_method" value="delete" />
 		<input type="submit" value="Delete" />
 	</form>
 	<% end %>
@@ -24,4 +25,4 @@
 		<input type="submit" value="Delete" />
 </form>
 
-
+</center>
