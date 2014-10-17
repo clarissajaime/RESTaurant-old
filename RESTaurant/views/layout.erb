@@ -7,26 +7,35 @@
 	<title>RESTaurant</title>
 	
 	<!-- external CSS link -->
-	<link rel="stylesheet" href="/public/stylesheets/normalize.css">
-	<link rel="stylesheet" href="/public/stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/normalize.css">
+	<!-- <link rel="stylesheet" href="/stylesheets/styles.css"> -->
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
 </head>
 <body>
-	<div class="container">
-		<header>
-			<h1>Dine Easy</h1>
-			<h2>Restaurant App</h2>
-		</header>
-	<div>
 
-	<header>
-		
-		<nav>
-			<ul>
-				<li><a href="/foods">Foods</a></li>
-				<li><a href="/parties">Parties</a></li>
-			</ul>
-		</nav>
-	</header>
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Dine Easy</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="/parties">Parties</a></li>
+	        <li><a href="/foods">Menu</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
     
     <%= yield %>
 

@@ -112,7 +112,12 @@ end
 # GET	/parties/:id	Display a single party and options for adding a food item to the party
 get '/parties/:id' do
 	@party = Party.find(params[:id])
-	@foods = Food.all 
+	@orders = @party.orders
+
+	@total_price = 0
+	@orders.each do |order|
+		@total_price += order.food.price
+	end
 
 	erb :"party/show"
 end
@@ -158,7 +163,10 @@ end
 
 
 # DELETE	/orders	Removes an order
-
+delete '/parties/:party_id/orders/:id' do
+	Order.delete(params[:id])
+	redirect '/parties/' + params[:party_id]
+end
 
 
 ####### RECIEPT ROUTES ########

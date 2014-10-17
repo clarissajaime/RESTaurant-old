@@ -4,29 +4,20 @@
 
 <a href="/parties/<%= @party.id %>/orders/new">Add new order</a>
 
-
-
 <ul>
-	<% @party.orders.each do |order| %>
+	<% @orders.each do |order| %>
 	<li><%= order.food.name %></li>
+	<form action="/parties/<%= @party.id %>/orders/<%= order.id %>" method="post">
+		<input type="hidden" name="_method" value="delete" /> 
+		<input type="submit" value="Delete" />
+	</form>
 	<% end %>
 </ul>
 
+<h3>Total price: <%= @total_price %></h3>
 
 
-
-
-
-
-
-
-
----
-
-
-
-
----
+<hr />
 
 <form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="delete" /> 
