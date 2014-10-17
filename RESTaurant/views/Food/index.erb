@@ -1,16 +1,31 @@
-<h2>Foods</h2>
-<a href="/foods/new">Add new</a>
+<h2>&nbsp;&nbsp;Foods</h2>
 
-<ul>
-  <% @foods.each do |food|%>
-    <li>
-      <a href="/foods/<%= food.id %>">
-        <%= food.name %> 
-      </a>
-      <ul>
-      	<li><%= food.description %></li>
-      	<li>$<%= food.price %></li>
-      </ul>   
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+
+  <div class="right">
+    <img src="/images/4-lulu-po.jpg" class="img-responsive" alt="Responsive image"><br>
+    <img src="/images/5-lulu-po.jpg" class="img-responsive" alt="Responsive image"><br>
+    <img src="/images/image7.jpg" class="img-responsive" alt="Responsive image">
+  </div>
+
+   <div class="left">
+  <ul>
+    <% @foods.each do |food|%>
+      <li>
+        <a href="/foods/<%= food.id %>">
+          <%= food.name %> 
+        </a>
+        <ul>
+          <li><%= food.description %></li>
+          <li>$<%= food.price %></li>
+        </ul>   
+      </li>
+    <% end %>
+  </ul>
+    <br>
+    <br>
+    <a href="/foods/new"><button type="button" class="btn btn-primary" text-align="right">Add new</button></a><br />
+</div>
+  </ul>
+  </div>
+</div>

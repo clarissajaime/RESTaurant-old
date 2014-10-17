@@ -1,9 +1,19 @@
-<h2>New order</h2>
+<h2>&nbsp;&nbsp;New order</h2>
 
-<form action="/orders" method="post">
+<div class="container">
+
+	<div class="right">
+		<img src="/images/lulupointerior.jpg" class="img-responsive" alt="Responsive image">
+	</div>
+
+   <div class="left">
+	<form action="/orders" method="post">
 	<% @foods.each do |food| %>
 		<input type="radio" name="order[food_id]" value="<%= food.id %>"><%= food.name %><br>
 	<% end %>
 		<input type="hidden" name="order[party_id]" value="<%= @party.id %>"></input>
 	<input type="submit" value="Add Food Item"></input>
 </form>
+
+	</div>
+</div>

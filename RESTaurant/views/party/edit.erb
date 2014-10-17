@@ -1,4 +1,13 @@
-<form action="/parties/<%= @party.id %>" method="post">
+<h2>&nbsp;&nbsp;Edit order</h2>
+
+<div class="container">
+
+	<div class="right">
+		<img src="/images/lulupointerior.jpg" class="img-responsive" alt="Responsive image">
+	</div>
+
+   <div class="left">
+	<form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="patch" >
 
 	<label for="party_id">Party id</label>
@@ -12,3 +21,6 @@
 
 	<input type="submit" value="Update party">
 </form>
+
+	</div>
+</div>

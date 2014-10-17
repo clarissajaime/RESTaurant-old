@@ -1,9 +1,5 @@
 
 body {
-	font-size: 12px;
-	line-height: 17px;
-	font-family: "Times New Roman";
-	background-color: #111E2D;
 	background-image: url("public/images/paven.png");
 	background-repeat: repeat;
 }
@@ -12,14 +8,34 @@ body {
 	display: #20222a;
 }
 
+a:link {
+    color: #575757;
+}
+
+/* visited link */
+a:visited {
+    color: #575757;
+}
+
+
 /*header {
 	background-image: url("images/brook-and-lyn-logo.gif");
 }*/
+
 
 .container {
 	width: 960px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+.left {
+      width:400px;
+      float:left;
+}
+.right {
+      width:400px;
+      float:right;
 }
 
 h1 {
