@@ -1,8 +1,9 @@
 
 body {
-	background-image: url("public/images/paven.png");
+	background-color: #E9E9E9;
 	background-repeat: repeat;
 	font-family: 'Varela Round', sans-serif;
+	padding: 0px 0px 30px 0px;
 }
 
 :link:hover {
@@ -32,34 +33,50 @@ a:visited {
 
 .content{
 	margin: 0 auto;
-    width: 200px; 
+    width: 220px; 
 	border-radius: 6px;
 	box-shadow: 0 1px 2px 0 
 	rgba(0, 0, 0, 0.22);
+	padding: 10px 10px 10px 10px;
+	background-color: #FFFFFF;
 }
 
 .outline {
 	margin: 0 auto;
     width: 600px; 
-    padding:  
+ 
 }
 
 .container {
 	width: 960px;
-	margin-right: auto;
-	margin-left: auto;
+	margin: auto;
+	border-radius: 6px;
+	box-shadow: 0 1px 2px 0 
+	rgba(0, 0, 0, 0.22);
+	background-color: #FFFFFF;
 }
 
+
 .left {
-      width:400px;
-      float:left;
+    width:400px;
+    float:left;
+    padding: 20px 0px 20px 20px;
 }
 .right {
       width:400px;
       float:right;
+      padding: 20px 20px 20px 20px;
 }
 
-h1 {
+.delete-order {
+	display: inline;
+}
+
+/*.navbar navbar-default {
+	background-color: F4F4F4;
+}
+*/
+/*h1 {
 	font-size: 36px;
 	font-weight: bold;
 	margin-top: 40px;
@@ -79,4 +96,4 @@ h3 {
 	font-size: 1.75em;
 }
 
-/* * { background: rgba(1, 1, 1, 0.1);} */
+/* * { background: rgba(1, 1, 1, 0.1);} */*/

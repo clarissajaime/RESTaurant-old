@@ -4,17 +4,20 @@
 		<input type="hidden" name="_method" value="patch" >
 
 		<label for="food_name">Name</label>
-		<input id="food_name" name="food[name]" type="text" value="<%= @food.name %>"><br />
+		<input id="food_name" name="food[name]" type="text" value="<%= @food.name %>"><br /><br />
 
 		<label for="food_description">Description</label>
-		<input id="food_description" name="food[description]" type="text" value="<%= @food.description %>"><br />
+		<textarea id="food_description" name="food[description]" type="text"><%= @food.description %></textarea><br /><br />
 
 		<label for="food_price">Price</label>
-		<input id="food_price" name="food[price]" type="number" value="<%= @food.price %>"><br />
+		<input id="food_price" name="food[price]" type="number" value="<%= @food.price %>"><br /><br />
 
 		<label for="food_active">Active</label>
-		<input id="food_active" name="food[active]" type="checkbox" value="<%= @food.active %>"><br />
+		<input id="food_active" name="food[active]" type="checkbox" value="<%= @food.active %>"><br /><br />
 
+		<center>
 		<input type="submit" value="Update Food Item" class="btn btn-success">
+		</center>
 	</form>
 </div>
+

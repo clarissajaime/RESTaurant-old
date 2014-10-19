@@ -1,27 +1,32 @@
 <div class="content">
-<h2>Table <%= @party.table_num %></h2>
+<center><h2>Table <%= @party.table_num %></h2></center>
 <h4>Number of guests <%= @party.guests %></h4>
-<p><a href="/parties/<%= @party.id %>/edit">Edit</a></p>
-
-<a href="/parties/<%= @party.id %>/orders/new">Add new order</a>
 
 <ul>
 	<% @orders.each do |order| %>
-	<li><%= order.food.name %>
-	<form action="/parties/<%= @party.id %>/orders/<%= order.id %>" method="post">
-		<input type="hidden" name="_method" value="delete" /> 
-		<input type="submit" value="Delete" class="btn btn-default btn-xs"/></li>
-	</form>
+	<li>
+		<%= order.food.name %>
+			<form action="/parties/<%= @party.id %>/orders/<%= order.id %>" method="post" class="delete-order">
+				<input type="hidden" name="_method" value="delete" /> 
+				<input type="submit" value="X" class="btn btn-danger btn-xs"/>
+			</form>
+	</li>
 	<% end %>
+	
 </ul>
 
 <hr />
 
-<h3>Total price: <%= @total_price %></h3>
+<h4>Total price: $<%= @total_price %></h4>
 
-<center><form action="/parties/<%= @party.id %>" method="post">
+
+<a href="/parties/<%= @party.id %>/orders/new"><button type="button" class="btn btn-primary">Add food</button></a>
+
+<a href="/parties/<%= @party.id %>/edit"><button type="button" class="btn btn-default">Edit party</button></a><br /><br />
+
+<form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="delete" /> 
 		<input type="submit" value="Delete" class="btn btn-danger"/>
-</form></center>
+</form>
 
 </div>
