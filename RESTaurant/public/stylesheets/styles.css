@@ -33,11 +33,11 @@ a:visited {
 
 .content{
 	margin: 0 auto;
-    width: 220px; 
+    width: 250px; 
 	border-radius: 6px;
 	box-shadow: 0 1px 2px 0 
 	rgba(0, 0, 0, 0.22);
-	padding: 10px 10px 10px 10px;
+	padding: 10px 40px;
 	background-color: #FFFFFF;
 }
 

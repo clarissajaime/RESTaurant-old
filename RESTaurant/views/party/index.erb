@@ -1,22 +1,13 @@
-<div class="container">
+<div class="content">
 	<h2>Parties</h2>
-	<div class="right">
-		<img src="/images/lulupointerior.jpg" class="img-responsive" alt="Responsive image">
-	</div>
-
-   <div class="left">
 	<ul>
 		<% @parties.each do |party| %>
 		<li>
 			<a href="/parties/<%= party.id %>"> Table <%= party.table_num %> -- guests: <%= party.guests %> </a><br>
 		</li>
 		<% end %>
-		<br>
-		<br>
-		<a href="parties/new"><button type="button" class="btn btn-primary" text-align="right">Add new party</button></a>
-
-</div>
-	</ul>
+		</ul>
+		<center><a href="parties/new"><button type="button" class="btn btn-primary">Add new party</button></a></center>
 	</div>
 </div>
 

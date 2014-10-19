@@ -1,24 +1,21 @@
-<div class="container">
-	<h2>Edit order</h2>
-	<div class="right">
-		<img src="/images/lulupointerior.jpg" class="img-responsive" alt="Responsive image">
-	</div>
-
-   <div class="left">
+<div class="content">
+	<h2>Edit party</h2>
 	<form action="/parties/<%= @party.id %>" method="post">
-	<input type="hidden" name="_method" value="patch" >
+		<input type="hidden" name="_method" value="patch" >
 
-	<label for="party_id">Party id</label>
-	<input id="id" name="party[id]" type="number" value="<%= @party.id %>"><br />
+		<label for="party_id">Party id</label>
+		<input id="id" name="party[id]" type="number" value="<%= @party.id %>"><br />
 
-	<label for="number_of_guests">Number of guests</label>
-	<input id="number_of_guests" name="party[guests]" type="number" value="<%= @party.guests %>"><br />
+		<label for="number_of_guests">Number of guests</label>
+		<input id="number_of_guests" name="party[guests]" type="number" value="<%= @party.guests %>"><br />
 
-	<label for="table_num">Table number</label>
-	<input id="table_num" name="party[table_num]" type="number" value="<%= @party.table_num%>"><br />
+		<label for="table_num">Table number</label>
+		<input id="table_num" name="party[table_num]" type="number" value="<%= @party.table_num%>"><br /><br />
 
-	<input type="submit" value="Update party" class="btn btn-primary">
-</form>
-
-	</div>
+		<input type="submit" value="Update party" class="btn btn-primary">
+	</form><br />
+	<form action="/parties/<%= @party.id %>" method="post">
+		<input type="hidden" name="_method" value="delete" /> 
+		<input type="submit" value="Delete" class="btn btn-danger"/>
+	</form>
 </div>

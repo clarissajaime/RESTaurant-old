@@ -1,5 +1,5 @@
 <div class="content">
-<center><h2>Table <%= @party.table_num %></h2></center>
+<h2>Table <%= @party.table_num %></h2>
 <h4>Number of guests <%= @party.guests %></h4>
 
 <ul>
@@ -20,13 +20,8 @@
 <h4>Total price: $<%= @total_price %></h4>
 
 
-<a href="/parties/<%= @party.id %>/orders/new"><button type="button" class="btn btn-primary">Add food</button></a>
+<a href="/parties/<%= @party.id %>/orders/new"><button type="button" class="btn btn-primary">Add food</button></a><br /><br />
 
 <a href="/parties/<%= @party.id %>/edit"><button type="button" class="btn btn-default">Edit party</button></a><br /><br />
-
-<form action="/parties/<%= @party.id %>" method="post">
-	<input type="hidden" name="_method" value="delete" /> 
-		<input type="submit" value="Delete" class="btn btn-danger"/>
-</form>
 
 </div>
