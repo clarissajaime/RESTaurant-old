@@ -80,10 +80,10 @@ patch '/foods/:id' do
 end 
 
 # DELETE	/foods/:id	Deletes a food item
-delete '/foods/:id' do
-	Food.delete(params[:id])
-	redirect '/foods'
-end
+# delete '/foods/:id' do
+# 	Food.delete(params[:id])
+# 	redirect '/foods'
+# end
 
 
 

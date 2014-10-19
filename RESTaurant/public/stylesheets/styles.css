@@ -30,6 +30,19 @@ a:visited {
 	background-image: url("images/brook-and-lyn-logo.gif");
 }*/
 
+.content{
+	margin: 0 auto;
+    width: 200px; 
+	border-radius: 6px;
+	box-shadow: 0 1px 2px 0 
+	rgba(0, 0, 0, 0.22);
+}
+
+.outline {
+	margin: 0 auto;
+    width: 600px; 
+    padding:  
+}
 
 .container {
 	width: 960px;
