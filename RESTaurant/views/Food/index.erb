@@ -5,12 +5,13 @@
     <% @foods.each do |food|%>
       <li>
         <a href="/foods/<%= food.id %>/edit">
-          <%= food.name %> 
+          <%= food.name %>
         </a>
         <ul>
           <li><%= food.description %></li>
           <li>$<%= food.price %></li>
-        </ul>   
+          <li>Active: <%= food.active %></li>
+        </ul>
       </li>
     <% end %>
   </ul>
