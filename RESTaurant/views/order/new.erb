@@ -1,19 +1,11 @@
-<h2>&nbsp;&nbsp;New order</h2>
-
-<div class="container">
-
-	<div class="right">
-		<img src="/images/lulupointerior.jpg" class="img-responsive" alt="Responsive image">
-	</div>
-
-   <div class="left">
+<div class="content">
+	<h2>New order</h2>
 	<form action="/orders" method="post">
-	<% @foods.each do |food| %>
-		<input type="radio" name="order[food_id]" value="<%= food.id %>"><%= food.name %><br>
-	<% end %>
-		<input type="hidden" name="order[party_id]" value="<%= @party.id %>"></input>
-	<input type="submit" value="Add Food Item"></input>
-</form>
-
-	</div>
+		<% @foods.each do |food| %>
+			<input type="radio" name="order[food_id]" value="<%= food.id %>">&nbsp;<%= food.name %><br />
+		<% end %><br />
+			<input type="hidden" name="order[party_id]" value="<%= @party.id %>"></input>
+		<input type="submit" value="Add Food Item" class="btn btn-primary"></input>
+	</form>
 </div>
+
