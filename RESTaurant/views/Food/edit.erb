@@ -13,11 +13,13 @@
 		<input id="food_price" name="food[price]" type="number" value="<%= @food.price %>"><br /><br />
 
 		<label for="food_active">Active</label>
-		<input id="food_active" name="food[active]" type="checkbox" value="<%= @food.active %>"><br /><br />
+		<select id="food_active" name="food[active]">
+			<option value=true <%= selected="selected" if @food.active == true %> >True</option>
+			<option value=false <%= selected="selected" if @food.active == false %> >False</option>
+		</select><br /><br />
 
 		<center>
 		<input type="submit" value="Update Food Item" class="btn btn-success">
 		</center>
 	</form>
 </div>
-

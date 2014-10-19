@@ -37,7 +37,7 @@ end
 
 ####### FOOD ROUTES ########
 
-# As an employee who manages the restaurant, I want to manage the menu so that waiting staff can use the app to create orders. 
+# As an employee who manages the restaurant, I want to manage the menu so that waiting staff can use the app to create orders.
 
 # GET	/foods	Display a list of food items available
 
@@ -46,20 +46,20 @@ get '/foods' do
   erb :"food/index"
 end
 
-# As a user, I want to be able to add new food items, so the menu can change. 
+# As a user, I want to be able to add new food items, so the menu can change.
 
 get '/foods/new' do
 	erb :"food/new"
-end 
+end
 
 
-# POST	/foods	Creates a new food item 
+# POST	/foods	Creates a new food item
 post '/foods' do
 	Food.create(params[:food])
 	redirect '/foods'
-end 
+end
 
-#get /foods/:id	Display a single food item 
+#get /foods/:id	Display a single food item
 
 get '/foods/:id' do
 	@food = Food.find(params[:id])
@@ -70,14 +70,14 @@ end
 get '/foods/:id/edit' do
 	@food = Food.find(params[:id])
 	erb :"food/edit"
-end 
+end
 
 # PATCH	/foods/:id	Updates a food item
 patch '/foods/:id' do
 	food = Food.find(params[:id])
 	food.update(params[:food])
 	redirect '/foods'
-end 
+end
 
 # DELETE	/foods/:id	Deletes a food item
 # delete '/foods/:id' do
@@ -99,7 +99,7 @@ get '/parties' do
 end
 
 # GET	/parties/new	Display a form for a new party
-get '/parties/new' do	
+get '/parties/new' do
 	erb :"party/new"
 end
 
@@ -126,7 +126,7 @@ end
 get '/parties/:id/edit' do
 	@party = Party.find(params[:id])
 	erb :"party/edit"
-end 
+end
 
 
 # PATCH	/parties/:id	Updates a party's details
@@ -137,7 +137,7 @@ patch '/parties/:id' do
 end
 
 
-# DELETE	/parties/:id	Delete a party 
+# DELETE	/parties/:id	Delete a party
 delete '/parties/:id' do
 	Party.delete(params[:id])
 	redirect '/parties'
@@ -149,7 +149,7 @@ end
 # New order form
 get '/parties/:id/orders/new' do
 	@party = Party.find(params[:id])
-	@foods = Food.all
+	@foods = Food.where(active: true)
 	erb :'order/new'
 end
 
