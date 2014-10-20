@@ -1,0 +1,11 @@
+Lulu and Po
+-----------
+
+Table <%= @party.table_num %>
+Number of guests <%= @party.guests %>
+
+<% @orders.each do |order| %>
+-  <%= order.food.name %> -- <%= order.food.price %>
+<% end %>
+
+Total price: $<%= @total_price %>

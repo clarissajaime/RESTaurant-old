@@ -153,14 +153,11 @@ get '/parties/:id/orders/new' do
 	erb :'order/new'
 end
 
-
 # POST	/orders	Creates a new order
 post '/orders' do
 	Order.create(params[:order])
 	redirect '/parties/' + params[:order][:party_id]
 end
-
-
 
 # DELETE	/orders	Removes an order
 delete '/parties/:party_id/orders/:id' do
@@ -168,6 +165,24 @@ delete '/parties/:party_id/orders/:id' do
 	redirect '/parties/' + params[:party_id]
 end
 
+get '/parties/:id/receipt' do
+  @party = Party.find(params[:id])
+  @orders = @party.orders
+
+  @total_price = 0
+  @orders.each do |order|
+    @total_price += order.food.price
+  end
+
+  file = File.new("./public/receipts/#{@party.id}-receipt.txt", "w")
+  file.write(erb :"receipt/template", :layout => false)
+  file.close
+
+  send_file file.path, :disposition => 'attachment'
+
+
+  redirect '/parties/' + params[:id]
+end
 
 ####### RECIEPT ROUTES ########
 # GET	/parties/:id/receipt	Saves the party's receipt data to a file. Displays the content of the receipt. Offer the file for download.
