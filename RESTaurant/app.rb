@@ -16,7 +16,8 @@
 
 require "bundler"
 Bundler.require
-require 'pry'
+require "pry"
+require "tempfile"
 
 ActiveRecord::Base.establish_connection({
   adapter: 'postgresql',
@@ -26,7 +27,6 @@ ActiveRecord::Base.establish_connection({
 require_relative 'models/food'
 require_relative 'models/party'
 require_relative 'models/order'
-
 
 ####### HOME PAGE ########
 # GET	/	Displays links to navigate the application (including links to each current parties)
@@ -113,11 +113,7 @@ end
 get '/parties/:id' do
 	@party = Party.find(params[:id])
 	@orders = @party.orders
-
-	@total_price = 0
-	@orders.each do |order|
-		@total_price += order.food.price
-	end
+	@total_price = Order.total_price(@orders)
 
 	erb :"party/show"
 end
@@ -165,25 +161,22 @@ delete '/parties/:party_id/orders/:id' do
 	redirect '/parties/' + params[:party_id]
 end
 
+####### RECIEPT ROUTES ########
+# GET	/parties/:id/receipt	Saves the party's receipt data to a file. Displays the content of the receipt. Offer the file for download.
+
 get '/parties/:id/receipt' do
   @party = Party.find(params[:id])
   @orders = @party.orders
+  @total_price = Order.total_price(@orders)
 
-  @total_price = 0
-  @orders.each do |order|
-    @total_price += order.food.price
-  end
-
-  file = File.new("./public/receipts/#{@party.id}-receipt.txt", "w")
+  file = Tempfile.new(["lulu-party-#{@party.id}-receipt-", ".txt"])
   file.write(erb :"receipt/template", :layout => false)
   file.close
 
   send_file file.path, :disposition => 'attachment'
-
+  file.unlink
 
   redirect '/parties/' + params[:id]
 end
 
-####### RECIEPT ROUTES ########
-# GET	/parties/:id/receipt	Saves the party's receipt data to a file. Displays the content of the receipt. Offer the file for download.
 # PATCH	/parties/:id/checkout	Marks the party as paid
